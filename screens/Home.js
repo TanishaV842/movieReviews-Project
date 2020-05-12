@@ -1,51 +1,62 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity, Modal } from "react-native";
+import { StyleSheet, View, Text, FlatList, TouchableOpacity, Modal, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { globalStyles } from '../styles/global';
 import Card from '../shared/Card';
 import { MaterialIcons } from '@expo/vector-icons';
+import ReviewForm from './ReviewForm';
 
 export default function Home({ navigation }) {
     const [modalOpen, setModalOpen] = useState(false);
     const [reviews, setReviews] = useState([
-        { title: 'Yelp', rating: 5, body: 'Superb', key: '1' },
-        { title: 'Hello', rating: 4, body: 'Good', key: '1' },
-        { title: 'What is That', rating: 3, body: 'Super', key: '1' },
+        { title: 'Abominable', rating: 5, body: 'A fantastic and heartwarming family movie', key: '1' },
+        { title: 'Queen of Katwe', rating: 4, body: 'Touching and inspirational', key: '2' },
+        { title: 'Captain America: The First Avenger', rating: 3, body: 'Adventurous and strengthening', key: '3' },
+        { title: 'Boo! A Madea Halloween', rating: 2, body: 'Not that great', key: '4' },
+        { title: 'Pitch Black', rating: 1, body: 'Not interesting, rather boring', key: '5' }
     ]);
+
+    const submitReview = (review) => {
+        review.key = Math.random().toString();
+        setReviews((currentReviews) => {
+            return [review, ...currentReviews];
+        });
+        setModalOpen(false);
+    };
 
     return (
         <View style={globalStyles.container}>
 
             <Modal visible={modalOpen} animationType='slide'>
-                <View style={StyleSheet.modalContent} >
-                    <MaterialIcons
-                        name='close'
-                        size={26}
-                        style={{ ...styles.toggleModal, ...styles.closeModal }}
-                        onPress={() => setModalOpen(false)}
-                    />
-                    <Text>Hello, There!</Text>
-                </View>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.modalContent}>
+                        <MaterialIcons
+                            name='close'
+                            size={24}
+                            style={{ ...styles.toggleModal, ...styles.modalClose }}
+                            onPress={() => setModalOpen(false)}
+                        />
+                        <ReviewForm submitReview={submitReview} />
+                    </View>
+                </TouchableWithoutFeedback>
             </Modal>
+
             <MaterialIcons
                 name='add'
-                size={26}
+                size={24}
                 style={styles.toggleModal}
                 onPress={() => setModalOpen(true)}
             />
-            <FlatList
-                data={reviews}
-                renderItem={({ item }) => (
-                    <TouchableOpacity onPress={() => navigation.navigate('Reviews', item)}>
-                        <Card>
-                            <Text style={globalStyles.titleText}>{item.title}</Text>
-                        </Card>
-                    </TouchableOpacity>
 
-                )}
-            />
+            <FlatList data={reviews} renderItem={({ item }) => (
+                <TouchableOpacity onPress={() => navigation.navigate('Reviews', item)}>
+                    <Card>
+                        <Text style={globalStyles.titleText}>{item.title}</Text>
+                    </Card>
+                </TouchableOpacity>
+            )} />
 
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({

@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
     },
     headerText: {
-        fontSize: 30,
+        fontSize: 25,
         fontWeight: 'bold',
         color: '#333',
         letterSpacing: 1,
@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     },
     icon: {
         position: 'absolute',
+        color: '#191970'
     },
 
     headerTitle: {
