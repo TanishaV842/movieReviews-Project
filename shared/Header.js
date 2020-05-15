@@ -1,34 +1,32 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, Image, SafeAreaView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-
-
 export default function Header({ navigation, title }) {
+    
     const openMenu = () => {
         navigation.openDrawer()
     }
+
     return (
-        <View>
-            <AntDesign name="menufold" size={24} onPress={openMenu} style={styles.icon} color="black" />
-            <View style={styles.headerTitle}>
-                <Image source={require('../assets/movie.png')} style={styles.headerImage} />
-                <Text style={styles.headerText}>{title}</Text>
+        <SafeAreaView>
+            <View>
+                <AntDesign name="menufold" size={24} onPress={openMenu} style={styles.icon} color="black" />
+                <View style={styles.headerTitle}>
+                    <Image source={require('../assets/movie.png')} style={styles.headerImage} />
+                    <Text style={styles.headerText}>{title}</Text>
+                </View>
             </View>
-        </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     headerTitle: {
-        // width: 100,
-        // height: 100,
-        // flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-
-
     },
+
     headerText: {
         fontSize: 25,
         fontWeight: 'bold',
@@ -36,22 +34,21 @@ const styles = StyleSheet.create({
         letterSpacing: 1,
         marginLeft: 8
     },
+
     icon: {
         position: 'absolute',
-        color: '#191970'
+        color: '#333'
     },
 
     headerTitle: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        height: 40,
     },
 
     headerImage: {
         width: 40,
         height: 30,
         marginHorizontal: 40,
-
-
-
+        marginRight: 18,
     },
-
 });

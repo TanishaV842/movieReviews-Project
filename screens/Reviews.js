@@ -5,6 +5,7 @@ import Card from '../shared/Card';
 
 
 export default function Reviews({ navigation }) {
+
     const rating = navigation.getParam('rating');
 
     return (
@@ -18,7 +19,6 @@ export default function Reviews({ navigation }) {
                 </View>
             </Card>
         </View>
-
     )
 }
 
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
         paddingTop: 16,
         marginTop: 16,
         borderTopWidth: 1,
-        borderTopColor: '#eee',
-      }
+        borderTopColor: '#4169e1'
+
+    }
 });

@@ -3,34 +3,37 @@ import { StyleSheet } from 'react-native';
 export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#fff',
-    
+    padding: 4,
+    backgroundColor: '#f8f8ff',
   },
+
   titleText: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    backgroundColor: '#f5f5f5',
     color: '#333',
-    backgroundColor: '#f5f5f5'
-    
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 6
   },
+
   paragraph: {
-    marginVertical: 8,
     lineHeight: 20,
+    marginVertical: 8,
 
   },
+
   input: {
+    backgroundColor: '#f5f5f5',
+    borderColor: '#87ceeb',
+    borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#333',
-    padding: 10,
     fontSize: 20,
-    borderRadius: 6,
-   
-    
-    
-    
-    
+    padding: 8,
+    marginBottom: 8,
+    marginTop: 8,
+    marginLeft: 10,
+    marginRight: 10
   },
+
   errorText: {
     color: 'firebrick',
     fontWeight: 'bold',

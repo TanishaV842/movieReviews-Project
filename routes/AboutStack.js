@@ -3,24 +3,26 @@ import { createStackNavigator } from 'react-navigation-stack';
 import About from '../screens/About';
 import Header from '../shared/Header';
 
-
-
-
 const screens = {
+    
     About: {
         screen: About,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <Header navigation={navigation} title='About MovieLand' />,
+                headerTitle: () => <Header navigation={navigation} title='MovieLand' />,
             }
         }
     },
 }
 
 const AboutStack = createStackNavigator(screens, {
+
     defaultNavigationOptions: {
         headerTintColor: '#444',
-        headerStyle: { backgroundColor: '#add8e6', height: 60 },
+        headerStyle: {
+            backgroundColor: '#f0f8ff',
+            height: 60
+        },
     }
 });
 

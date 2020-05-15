@@ -1,18 +1,46 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity, Modal, TouchableWithoutFeedback, Keyboard } from "react-native";
+import {
+    StyleSheet, View, Text, FlatList, TouchableOpacity,
+    Modal, TouchableWithoutFeedback, Keyboard
+} from "react-native";
 import { globalStyles } from '../styles/global';
 import Card from '../shared/Card';
 import { MaterialIcons } from '@expo/vector-icons';
 import ReviewForm from './ReviewForm';
 
 export default function Home({ navigation }) {
+
     const [modalOpen, setModalOpen] = useState(false);
+
     const [reviews, setReviews] = useState([
-        { title: 'Abominable', rating: 5, body: 'A fantastic and heartwarming family movie', key: '1' },
-        { title: 'Queen of Katwe', rating: 4, body: 'Touching and inspirational', key: '2' },
-        { title: 'Captain America: The First Avenger', rating: 3, body: 'Adventurous and strengthening', key: '3' },
-        { title: 'Boo! A Madea Halloween', rating: 2, body: 'Not that great', key: '4' },
-        { title: 'Pitch Black', rating: 1, body: 'Not interesting, rather boring', key: '5' }
+
+        {
+            title: 'Queen of Katwe',
+            rating: 4,
+            body: 'Touching and inspirational',
+            key: '1'
+        },
+
+        {
+            title: 'Abominable',
+            rating: 5,
+            body: 'A fantastic and heartwarming family movie',
+            key: '2'
+        },
+
+        {
+            title: 'Pitch Black',
+            rating: 1,
+            body: 'Not interesting, rather boring',
+            key: '3'
+        },
+
+        {
+            title: 'Captain America-The First Avenger',
+            rating: 3,
+            body: 'Adventurous and strengthening',
+            key: '4'
+        },
     ]);
 
     const submitReview = (review) => {
@@ -25,7 +53,7 @@ export default function Home({ navigation }) {
 
     return (
         <View style={globalStyles.container}>
-
+            <Text style={styles.movies}> Reviewed Titles </Text>
             <Modal visible={modalOpen} animationType='slide'>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={styles.modalContent}>
@@ -62,18 +90,38 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
     toggleModal: {
         marginBottom: 10,
+        marginLeft: 5,
+        marginTop: 10,
         borderWidth: 1,
-        borderColor: '#d3d3d3',
-        padding: 10,
+        borderColor: '#4169e1',
+        padding: 15,
         borderRadius: 10,
-        alignSelf: 'center',
+        alignSelf: 'flex-start',
+        shadowOpacity: 1,
+        backgroundColor: '#f0f8ff'
     },
-    closeModal: {
+
+    modalClose: {
         marginTop: 20,
         marginBottom: 0,
+        borderRightWidth: 1,
+        borderLeftWidth: 1,
+        alignSelf: 'flex-start',
+        shadowOpacity: 0.5,
+        backgroundColor: '#f0f8ff'
     },
-    modalContent: {
-        flex: 1,
 
+    modalContent: {
+        flex: 1
+    },
+
+    movies: {
+        textAlign: 'center',
+        color: '#4169e1',
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginTop: 5,
+        marginRight: 12,
+        padding: 12
     }
-})
+});
