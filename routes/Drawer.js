@@ -7,7 +7,6 @@ import ContactStack from './ContactStack';
 const MainDrawerNavigator = createDrawerNavigator({
     Home: {
         screen: HomeStack,
-
     },
     About: {
         screen: AboutStack,

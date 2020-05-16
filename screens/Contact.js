@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, SafeAreaView, Image } from 'react-native';
 import { Card } from 'react-native-elements';
 
+
 export default function Contact() {
     return (
         <SafeAreaView>
@@ -13,7 +14,7 @@ export default function Contact() {
                 <Text> Email: movieland@movies.com </Text>
                 <Image style={styles.image} />
                 <Image source={require('../assets/kon-karampelas-N82naZ0N4TY-unsplash.jpg')} />
-            </Card>
+                </Card>
         </SafeAreaView>
     );
 }

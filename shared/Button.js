@@ -13,6 +13,7 @@ export default function FlatButton({ text, onPress }) {
 
 
 const styles = StyleSheet.create({
+    
     btn: {
         backgroundColor: '#4169e1',
         paddingVertical: 12,
